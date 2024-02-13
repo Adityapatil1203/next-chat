@@ -6,8 +6,8 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "CHAT",
-  description: "CHAT",
+  title: "Chat",
+  description: "Chat , Message",
 };
 
 export default function RootLayout({ children }) {

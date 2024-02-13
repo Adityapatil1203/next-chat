@@ -8,7 +8,10 @@ const Footer = () => {
       <aside>
         <p>
           {currentMonth} {currentYear} - Copyright © |
-          <Link href={"https://tusharupadhyay.vercel.app/"}>
+          <Link
+            href={"https://www.linkedin.com/in/tusharupadhya/"}
+            target="_blank"
+          >
             {" "}
             <span className="transition-all duration-200 hover:text-white">
               Tushar Upadhyay

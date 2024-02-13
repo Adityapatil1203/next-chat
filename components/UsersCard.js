@@ -14,7 +14,7 @@ const UsersCard = ({ avatarUrl, name, latestMessage, time, type }) => {
         </div>
       </div>
 
-      {type == "chat" && (
+      {type === "chat" && (
         /* Name, latest message, and time on the right */
         <div className="flex-1">
           <div className="flex items-center justify-between">
@@ -24,7 +24,7 @@ const UsersCard = ({ avatarUrl, name, latestMessage, time, type }) => {
         </div>
       )}
 
-      {type == "user" && (
+      {type === "user" && (
         /* Name */
         <div className="flex-1">
           <div className="flex items-center justify-between">

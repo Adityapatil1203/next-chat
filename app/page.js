@@ -33,7 +33,7 @@ function page() {
     return () => unsubscribe();
   }, [auth, router]);
 
-  if (user == null) return <div className="text-4xl">Loading...</div>;
+  if (user == null) return <div className="flex text-4xl">Loading...</div>;
 
   return (
     <div className="flex h-screen">

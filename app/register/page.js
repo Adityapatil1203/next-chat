@@ -86,22 +86,22 @@ function page() {
   };
   console.log(avatarUrl);
   return (
-    <div className="flex justify-center items-center h-screen font-primary p-10 m-2">
+    <div className="flex items-center justify-center h-screen p-10 m-2 font-primary">
       {/*form*/}
       <form
         onSubmit={handleSubmit}
-        className="space-y-4 w-full max-w-2xl shadow-lg p-10"
+        className="w-full max-w-2xl p-10 space-y-4 shadow-lg"
       >
         <h1 className="font-secondary text-xl text-center font-semibold text-[#0b3a65ff]">
           CHAT<span className="font-bold text-[#eeab63ff]">2</span>CHAT
         </h1>
 
         {/* Display the avatar and refresh button */}
-        <div className="flex items-center space-y-2 justify-between border border-gray-200 p-2">
+        <div className="flex items-center justify-between p-2 space-y-2 border border-gray-200">
           <img
             src={avatarUrl}
             alt="Avatar"
-            className=" rounded-full h-20 w-20"
+            className="w-20 h-20 rounded-full "
           />
           <button
             type="button"
