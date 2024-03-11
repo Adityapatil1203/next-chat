@@ -1,20 +1,4 @@
-<div align="center"><h1> Chat App </h1> </div>
 
-# About
-Real-time, collaborative whiteboard application leveraging the power of Socket.IO and ReactJS. This interactive platform enables multiple users to draw and share ideas simultaneously, fostering creativity and teamwork
-
-## Website is Live : [https://chat-tusharupadhyay.vercel.app/login](https://chat-tusharupadhyay.vercel.app/login)
-
-# Screenshots
-![Screenshot 2024-02-28 230834](https://github.com/tushar-upadhya/chatt/assets/113006456/401f2b42-8730-46b5-9de0-19dc3dd13cda)
-
-
-![Screenshot 2024-02-28 230850](https://github.com/tushar-upadhya/chatt/assets/113006456/8e26dd4d-1db3-44a0-9106-1204f9d00df1)
-
-![Screenshot 2024-02-28 230930](https://github.com/tushar-upadhya/chatt/assets/113006456/f1908564-4575-44fc-8375-9eff3e1315cd)
-
-
-![Screenshot 2024-02-28 230952](https://github.com/tushar-upadhya/chatt/assets/113006456/e44f5596-740a-4ed2-b1da-1fdffce66812)
 
 # Tech Stack
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?logo=html5&logoColor=white&style=for-the-badge)
