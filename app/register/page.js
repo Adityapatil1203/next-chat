@@ -9,198 +9,157 @@ import { AvatarGenerator } from "random-avatar-generator";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-function page() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [avatarUrl, setAvatarUrl] = useState("");
-  const router = useRouter();
+const Page = () => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [errors, setErrors] = useState({})
+  const [loading, setLoading] = useState(false)
+  const [avatarUrl, setAvatarUrl] = useState('')
+
+  const router = useRouter()
 
   const generateRandomAvatar = () => {
     const generator = new AvatarGenerator();
     return generator.generateRandomAvatar();
-  };
+  }
 
-  const handleRefreshAvatar = () => {
-    setAvatarUrl(generateRandomAvatar());
-  };
+  const handleRefresh = () => {
+    setAvatarUrl(generateRandomAvatar())
+  }
 
   useEffect(() => {
-    setAvatarUrl(generateRandomAvatar());
-  }, []);
+    setAvatarUrl(generateRandomAvatar())
+  }, [])
 
   const validateForm = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const newErrors = {};
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    const newError = {}
+
     if (!name.trim()) {
-      newErrors.name = "Name is required";
+      newError.name = 'Name is required'
     }
-    if (!email.trim() || !emailRegex.test(email)) {
-      newErrors.email = "Invalid email address";
+    if (!email.trim()) {
+      newError.email = 'Email is required'
     }
-    if (password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
+    if (password.length === 0) {
+      newError.password = 'Password is required'
     }
     if (password !== confirmPassword) {
-      newErrors.confirmPassword = "Passwords do not match";
+      newError.confirmPassword = 'Password not matched'
     }
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // Return true if no errors
-  };
 
-  const handleSubmit = async (evt) => {
-    evt.preventDefault();
-    setLoading(true);
+    setErrors(newError)
+    return Object.keys(newError).length === 0
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true)
     try {
-      if (validateForm()) {
-        // Register user with Firebase Authentication
-        const userCredential = await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-        const user = userCredential.user;
 
-        // Now you can use the user's UID as the document ID
-        const docRef = doc(firestore, "users", user.uid);
-        await setDoc(docRef, {
-          name,
-          email: email,
-          avatarUrl,
-          status: "online",
-        });
-
-        router.push("/");
-        setErrors({});
+      if (!validateForm()) {
+        setLoading(false)
+        return;
       }
+
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+      const user = userCredential.user;
+
+      const docRef = doc(firestore, 'users', user.uid)
+
+      await setDoc(docRef, {
+        name,
+        email,
+        avatarUrl
+      })
+
+      router.push('/')
+      setErrors({})
+      setLoading(false)
+
     } catch (error) {
-      // Handle registration errors
-      console.error("Error registering user:", error.message);
-      toast.error(error.message);
-      setErrors({});
+      console.log(error)
+      setLoading(false)
     }
-    setLoading(false);
-  };
-  console.log(avatarUrl);
+
+  }
+
+
   return (
-    <div className="flex items-center justify-center h-screen p-10 m-2 font-primary">
-      {/*form*/}
-      <form
-        onSubmit={handleSubmit}
-        className="w-full max-w-2xl p-10 space-y-4 shadow-lg"
-      >
-        <h1 className="font-secondary text-xl text-center font-semibold text-[#0b3a65ff]">
-          CHAT<span className="font-bold text-[#eeab63ff]">2</span>CHAT
-        </h1>
+    <div className='flex justify-center items-center h-screen p-10 m-2' >
 
-        {/* Display the avatar and refresh button */}
-        <div className="flex items-center justify-between p-2 space-y-2 border border-gray-200">
-          <img
-            src={avatarUrl}
-            alt="Avatar"
-            className="w-20 h-20 rounded-full "
-          />
-          <button
-            type="button"
-            className="btn btn-outline"
-            onClick={handleRefreshAvatar}
-          >
-            New Avatar
-          </button>
+      <form onSubmit={handleSubmit} className='space-y-4 w-full max-w-2xl shadow-lg p-10 '>
+        <h1 className='text-2xl text-center font-semibold text-white' >Let's Chat</h1>
+
+        <div className='flex items-center space-y-2 justify-between border border-gray-300 p-2'>
+          {typeof window !== 'undefined' && <img src={avatarUrl} alt="avatar" className='rounded-full h-20 w-20 ' />}
+          <button onClick={handleRefresh} className='btn btn-outline' >New Avatar</button>
         </div>
 
-        {/*name*/}
         <div>
-          <label className="label">
-            <span className="text-base label-text">Name</span>
+          <label className='label' >
+            <span className='text-base label-text' >Name</span>
           </label>
-          <input
-            type="text"
-            placeholder="Name"
-            className="w-full input input-bordered"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          {errors.name && <span className="text-red-500">{errors.name}</span>}
+          <input type="text" value={name} onChange={(e) => setName(e.target.value)} className='w-full input input-bordered ' placeholder='Enter your name' />
+
+          {
+            errors.name && <span className='text-sm text-red-600 '>{errors.name}</span>
+          }
         </div>
 
-        {/*email*/}
         <div>
-          <label className="label">
-            <span className="text-base label-text">Email</span>
+          <label className='label' >
+            <span className='text-base label-text' >Email</span>
           </label>
-          <input
-            type="text"
-            placeholder="Email"
-            className="w-full input input-bordered"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          {errors.email && <span className="text-red-500">{errors.email}</span>}
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className='w-full input input-bordered ' placeholder='Enter your email' />
+
+          {
+            errors.email && <span className='text-sm text-red-600 '>{errors.email}</span>
+          }
         </div>
 
-        {/*password*/}
         <div>
-          <label className="label">
-            <span className="text-base label-text">Password</span>
+          <label className='label' >
+            <span className='text-base label-text' >Password</span>
           </label>
-          <input
-            type="password"
-            placeholder="Enter Password"
-            className="w-full input input-bordered"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {errors.password && (
-            <span className="text-red-500">{errors.password}</span>
-          )}
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className='w-full input input-bordered ' placeholder='Enter your password' />
+
+          {
+            errors.password && <span className='text-sm text-red-600 '>{errors.password}</span>
+          }
         </div>
 
-        {/*confirm password*/}
         <div>
-          <label className="label">
-            <span className="text-base label-text">Confirm Password</span>
+          <label className='label' >
+            <span className='text-base label-text' >Confirm Password</span>
           </label>
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            className="w-full input input-bordered"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-          {errors.confirmPassword && (
-            <span className="text-red-500">{errors.confirmPassword}</span>
-          )}
+          <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className='w-full input input-bordered ' placeholder='Enter your confirmPassword' />
+
+          {
+            errors.confirmPassword && <span className='text-sm text-red-600 '>{errors.confirmPassword}</span>
+          }
         </div>
 
         <div>
-          <button
-            type="submit"
-            className="btn btn-block bg-[#0b3a65ff] text-white"
-          >
-            {loading ? (
-              <span className="loading loading-spinner loading-sm"></span>
-            ) : (
-              "Sign Up"
-            )}
-          </button>
+          <button className='btn btn-block bg-[#0b3a] ' >{
+            loading ? <span className='loading loading-spinner loading-sm ' ></span> : 'Register'
+          }</button>
+
         </div>
 
-        <span>
-          Already have an account?{" "}
-          <Link
-            href="/login"
-            className="text-blue-600 hover:text-blue-800 hover:underline"
-          >
+        <span>Already have an account?{' '}
+          <Link href='/login' className='text-blue-700 hover:underline hover:text-blue-900 '>
             Login
           </Link>
         </span>
+
+
       </form>
+
     </div>
-  );
+  )
 }
 
-export default page;
+export default Page

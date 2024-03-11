@@ -14,7 +14,7 @@ const Footer = () => {
           >
             {" "}
             <span className="transition-all duration-200 hover:text-white">
-              Tushar Upadhyay
+              Aditya Patil
             </span>
           </Link>
         </p>
