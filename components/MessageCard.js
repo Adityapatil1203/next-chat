@@ -16,13 +16,13 @@ const MessageCard = ({ message, me, other }) => {
     }
 
     const handleDelete =async ()=>{
-    //   if (typeof window !== 'undefined') {
-    //     // Code that uses window
-    //     const confirmed = window.confirm('Are you sure you want to delete this message? This action cannot be undone.');
-    //     if (!confirmed) {
-    //       return; // If user cancels, do nothing
-    //     }
-    // }
+      if (typeof window !== 'undefined') {
+        // Code that uses window
+        const confirmed = window.confirm('Are you sure you want to delete this message? This action cannot be undone.');
+        if (!confirmed) {
+          return; // If user cancels, do nothing
+        }
+    }
      
       try {
         const messageRef = doc(firestore, 'messages', message.id);
