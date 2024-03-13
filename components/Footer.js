@@ -9,7 +9,7 @@ const Footer = () => {
         <p>
           {currentMonth} {currentYear} - Copyright © |
           <Link
-            href={"https://www.linkedin.com/in/tusharupadhya/"}
+            href={"https://www.linkedin.com/in/aditya-patil-b7b435258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"}
             target="_blank"
           >
             {" "}
