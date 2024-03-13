@@ -33,17 +33,17 @@ function page() {
     return () => unsubscribe();
   }, [auth, router]);
 
-  if (user == null) return <div className="flex text-4xl">Loading...</div>;
+  if (user == null) return <div className="flex h-screen items-center justify-center " > <span className="loading loading-spinner loading-lg"></span></div>;
 
   return (
     <div className="flex h-screen">
       {/* Left side users */}
-      <div className="flex-shrink-0 w-3/12">
+      <div className="flex-shrink-0 w-4/12">
         <Users userData={user} setSelectedChatroom={setSelectedChatroom} />
       </div>
 
       {/* Right side chat room */}
-      <div className="flex-grow w-9/12">
+      <div className="flex-grow w-/12">
         {selectedChatroom ? (
           <>
             <ChatRoom user={user} selectedChatroom={selectedChatroom} />

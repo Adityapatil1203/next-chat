@@ -1,6 +1,6 @@
 import React from "react";
 
-const UsersCard = ({ avatarUrl, name, latestMessage, time, type }) => {
+const UsersCard = ({ avatarUrl, name, latestMessageText, time, type }) => {
   return (
     <div className='flex items-center p-4 border-b border-gray-500 relative hover:cursor-pointer '>
         <div className='flex-shrink-0 mr-4 relative '>
@@ -17,7 +17,7 @@ const UsersCard = ({ avatarUrl, name, latestMessage, time, type }) => {
                         <span className='text-xs text-gray-500 '>{time}</span>
                     </div>
                     <p className='text-sm text-gray-500 truncate'>
-                        {latestMessage}
+                        {latestMessageText}
                     </p>
                 </div>
                 </>

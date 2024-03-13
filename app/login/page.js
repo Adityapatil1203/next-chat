@@ -40,6 +40,7 @@ const Page = () => {
       const user = userCredential.user
 
       if (user) {
+        toast.success('Login successful')
         router.push('/')
       }
 

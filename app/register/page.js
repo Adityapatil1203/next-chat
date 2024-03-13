@@ -75,6 +75,7 @@ const Page = () => {
         avatarUrl
       })
 
+      toast.success('Login successful')
       router.push('/')
       setErrors({})
       setLoading(false)

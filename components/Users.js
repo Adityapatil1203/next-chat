@@ -136,12 +136,12 @@ const Users = ({ userData, setSelectedChatroom }) => {
 
   return (
     <div className='shadow-lg h-screen overflow-auto mt-4 mb-20 '>
-     <div className='flex flex-col md:flex-row p-4 gap-2 '>
+     <div className='flex flex-col p-4 gap-2 '>
         <button onClick={()=>handleTab('users')} className={`btn btn-outline ${activeTab==='users'?'btn-primary':''}`}>
             Users
         </button>
         <button onClick={()=>handleTab('Chatrooms')} className={`btn btn-outline ${activeTab==='Chatrooms'?'btn-primary':''}`}>
-            Chatrooms
+            Chatroom
         </button>
         <button onClick={handleLogout} className={`btn btn-outline`}>
            Logout
@@ -158,7 +158,6 @@ const Users = ({ userData, setSelectedChatroom }) => {
                    name={chatroom.userData[chatroom.users.find((id)=>id!==userData?.id)].name}
                    avatarUrl={chatroom.userData[chatroom.users.find((id)=>id!==userData?.id)].avatarUrl}
                   latestMessageText = {chatroom.lastMessage}
-                   time='2h ago'
                    type={'chat'}
                   />
                </div>
@@ -176,10 +175,26 @@ const Users = ({ userData, setSelectedChatroom }) => {
          <h1 className='px-4 text-base font-bold my-3'>Users</h1>
        
          {
-            loading ? <div className="flex  gap-4 w-52">
-            <div className="skeleton h-10 w-10"></div>
-            <div className="skeleton h-6 w-full"></div>
-          </div>:
+            
+            loading ?
+             <div>
+               <div className="flex  gap-4 w-52">
+                   <div className="skeleton ml-2 h-10 w-10"></div>
+                  <div className="skeleton h-6 w-full"></div>
+               </div>
+               <div className="flex  gap-4 w-52">
+                   <div className="skeleton ml-2 h-10 w-10"></div>
+                  <div className="skeleton h-6 w-full"></div>
+               </div>
+               <div className="flex  gap-4 w-52">
+                   <div className="skeleton ml-2 h-10 w-10"></div>
+                  <div className="skeleton h-6 w-full"></div>
+               </div>
+               <div className="flex  gap-4 w-52">
+                   <div className="skeleton ml-2 h-10 w-10"></div>
+                  <div className="skeleton h-6 w-full"></div>
+               </div>
+              </div>:
             users.map((user)=>(
                user.id !== userData?.id 
                &&
@@ -188,7 +203,6 @@ const Users = ({ userData, setSelectedChatroom }) => {
                key={user.id}
                name={user.name}
                avatarUrl={user.avatarUrl}
-               time='3h ago'
                type='user'
               />
               </div>
