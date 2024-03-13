@@ -2,7 +2,7 @@ import React from "react";
 
 const UsersCard = ({ avatarUrl, name, latestMessageText, time, type }) => {
   return (
-    <div className='flex items-center p-4 border-b border-gray-500 relative hover:cursor-pointer '>
+    <div className='flex flex-col md:flex-row items-center p-4 border-b border-gray-500 relative hover:cursor-pointer '>
         <div className='flex-shrink-0 mr-4 relative '>
             <div className="w-12 h-12 rounded-full overflow-hidden ">
                 <img src={avatarUrl} alt="avatar" className='w-full h-full object-cover ' />
