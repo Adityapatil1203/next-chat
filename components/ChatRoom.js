@@ -26,6 +26,14 @@ const ChatRoom = ({ user, selectedChatroom }) => {
     const [image,setImage] = useState(null)
     const messagesContainerRef = useRef(null)
 
+    
+    useEffect(() => {
+      // Scroll to the bottom when messages change
+      if (messagesContainerRef.current) {
+        messagesContainerRef.current.scrollTop =
+          messagesContainerRef.current.scrollHeight;
+      }
+    }, [messages]);
 
     useEffect(()=>{
         if(!chatRoomId){
@@ -82,7 +90,7 @@ const ChatRoom = ({ user, selectedChatroom }) => {
    
   return (
     <div className='flex flex-col h-screen '>
-        <div className="flex-1 overflow-y-auto p-4 md:p-10 ">
+        <div ref={messagesContainerRef} className="flex-1 overflow-y-auto p-4 md:p-10 ">
             {
                 messages?.map((message)=>(
                     <MessageCard key={message.id} message={message} me={me} other={other} />
