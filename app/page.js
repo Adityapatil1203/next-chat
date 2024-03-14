@@ -43,7 +43,7 @@ function page() {
       </div>
 
       {/* Right side chat room */}
-      <div className="flex-grow w-/12">
+      <div className="flex-grow w-8/12">
         {selectedChatroom ? (
           <>
             <ChatRoom user={user} selectedChatroom={selectedChatroom} />
