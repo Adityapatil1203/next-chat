@@ -92,7 +92,7 @@ const Page = () => {
     <div className='flex justify-center items-center h-screen p-10 m-2' >
 
       <form onSubmit={handleSubmit} className='space-y-4 w-full max-w-2xl shadow-lg p-10 '>
-        {/* <h1 className='text-2xl text-center font-semibold text-white' >Let's Chat</h1> */}
+        <h1 className='text-2xl text-center font-semibold text-white' >Sign Up</h1>
 
         <div className='flex items-center space-y-2 justify-between border border-gray-300 p-2'>
           {typeof window !== 'undefined' && <img src={avatarUrl} alt="avatar" className='rounded-full h-20 w-20 ' />}

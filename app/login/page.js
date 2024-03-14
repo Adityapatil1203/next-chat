@@ -54,7 +54,7 @@ const Page = () => {
   return (
     <div className='flex justify-center items-center h-screen p-10 m-2'>
       <form onSubmit={handleSubmit} className='space-y-4 w-full max-w-2xl shadow-lg p-10'>
-        {/* <h1 className='text-2xl text-center font-semibold text-white'>Let's Chat</h1> */}
+        <h1 className='text-2xl text-center font-semibold text-white'>Login</h1>
         <div>
           <label className='label'>
             <span className='text-base label-text'>Email</span>
