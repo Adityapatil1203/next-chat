@@ -65,7 +65,7 @@ const MessageInput = ({
 
 
   return (
-    <div className='flex md:flex-row flex-col items-center p-4 border-gray-300 '>
+    <div className='flex w-full items-center p-4 border-gray-300 '>
        {/* attach file */}
        <FaPaperclip onClick={()=>{document.getElementById('my_modal_3').showModal()}} className={`  ${image? 'text-blue-500':"text-gray-500 "} mr-2 cursor-pointer `} />
 
