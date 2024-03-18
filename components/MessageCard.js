@@ -54,13 +54,13 @@ const MessageCard = ({ message, me, other }) => {
           }
            
 
-            <div className={`text-white p-2 rounded-md ${isMessageFromMe?'bg-blue-500 self-end':'bg-[#19D39E] self-start'} `}>
+            <div className={`text-white md:p-2 p-1 rounded-md ${isMessageFromMe?'bg-blue-500 self-end':'bg-[#19D39E] self-start'} `}>
               {
                 message.image && (
                   <img 
                   src={message.image} 
                   alt="image"
-                  className='md:w-60 w-50 md:h-40 h-30 object-cover rounded-md '
+                  className='md:w-60 w-50 md:h-40 h-20 object-cover rounded-md '
                   />
                 )
               }
