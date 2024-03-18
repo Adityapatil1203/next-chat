@@ -67,7 +67,7 @@ const MessageCard = ({ message, me, other }) => {
                 <p className='md:text-xl text-xs'>{message.content}</p>
                 <div className="text-xs text-gray-300">{timeAgo(message.time)}</div>
                 {isMessageFromMe && (
-                    <button onClick={handleDelete} className="ml-2 text-xl text-red-500 cursor-pointer">
+                    <button onClick={handleDelete} className="ml-2 mt-2 text-xl text-red-500 cursor-pointer">
                       <FaTrash />
                     </button>
                   )}
