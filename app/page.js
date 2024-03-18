@@ -44,7 +44,7 @@ function page() {
   return (
     <>
 
-    <div className="flex mt-1 font-bold text-3xl items-center  ">
+    <div className="fixed top-0 flex mt-1 font-bold text-3xl items-center  ">
        <span onClick={handleUser} className="ml-2 hover:cursor-pointer flex w-3/12 " >
          {selectedUsers ? "✕" : <GiHamburgerMenu />}
           </span>
