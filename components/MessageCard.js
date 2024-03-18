@@ -35,12 +35,12 @@ const MessageCard = ({ message, me, other }) => {
 
   return (
     <div className={`flex mb-4 ${isMessageFromMe?'justify-end':'justify-start'} `}>
-        <div className={`flex gap-2 ${isMessageFromMe?'ml-2 mr-2 ':'mr-2'} `}>
+        <div className={`flex gap-2 ${isMessageFromMe?'md:ml-2 ml-1 md:mr-2 mr-1 ':'md:mr-2 mr-1'} `}>
           {
             !isMessageFromMe && (
               <img src={other.avatarUrl}
               alt="avatar"            
-             className='h-11 w-11  rounded-full object-cover '
+             className='md:h-11 h-9 md:w-11 w-9 rounded-full object-cover '
               />
             )
           }
@@ -48,7 +48,7 @@ const MessageCard = ({ message, me, other }) => {
             isMessageFromMe && (
               <img src={me.avatarUrl}
               alt="avatar"            
-             className='h-11 w-11 rounded-full object-cover '
+             className='md:h-11 h-9 md:w-11 w-9 rounded-full object-cover '
               />
             )
           }
@@ -60,7 +60,7 @@ const MessageCard = ({ message, me, other }) => {
                   <img 
                   src={message.image} 
                   alt="image"
-                  className='w-60 h-40 object-cover rounded-md '
+                  className='md:w-60 w-50 md:h-40 h-30 object-cover rounded-md '
                   />
                 )
               }
