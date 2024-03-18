@@ -13,7 +13,7 @@ const UsersCard = ({ avatarUrl, name, latestMessageText, time, type }) => {
                 <>
                 <div className='flex-1 '>
                     <div className="flex items-center justify-between ">
-                        <h2 className='text-lg font-semibold '>{name}</h2>
+                        <h2 className='text-md md:text-lg font-semibold '>{name}</h2>
                         <span className='text-xs text-gray-500 '>{time}</span>
                     </div>
                     <p className='text-sm text-gray-500 truncate'>
@@ -28,7 +28,7 @@ const UsersCard = ({ avatarUrl, name, latestMessageText, time, type }) => {
                 <>
                 <div className='flex-1 '>
                     <div className="flex items-center justify-between ">
-                        <h2 className='text-lg font-semibold '>{name}</h2>             
+                        <h2 className='text-md md:text-lg font-semibold '>{name}</h2>             
                     </div>
                 
                 </div>
